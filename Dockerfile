@@ -11,4 +11,6 @@ CMD ["npm", "run", "build"]
 
 # start the run phase
 FROM nginx
+# EXPOSE Needed because AWS will not do this automatically
+EXPOSE 80 
 COPY --from=builder /app/build /usr/share/nginx/html
