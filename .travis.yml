@@ -6,4 +6,4 @@ before_install:
     - docker build -t hbirkdale/nohnoh-react -f Dockerfile.dev .
     
 script:
-    - docker run -e CI=true hbirkdale/nohnoh-react npm run test -- --coverage
+    - docker run -e CI=true hbirkdale/nohnoh-react npm run test
