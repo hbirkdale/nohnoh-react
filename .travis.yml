@@ -5,4 +5,17 @@ services:
 before_install:
     - docker build -t hbirkdale/nohnoh-react -f Dockerfile.dev .   
 script:
-    - docker run -e CI=true hbirkdale/nohnoh-react npm run test
+    - docker run -e CI=true hbirkdale/nohnoh-react npm run test    
+deploy:
+    provider: elasticbeanstalk
+    region: "us-west-2"
+    app: "nohnoh"
+    env: "nohnoh-env"
+    bucket_name: "elasticbeanstalk-us-west-2-258362590558"
+    bucket_path: "nohnoh"
+    on:
+      branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+      secure: "$AWS_SECRET_KEY"
+    
